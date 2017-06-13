@@ -38,7 +38,7 @@ function fromStringToObject(str) {
  * Converts a string to an object
  * @param {string} str - string to convert to object
  * @param {function} processor - function to process string
- * @returns {Object} object representing provided string
+ * @returns {Object|undefined} object representing provided string, undefined otherwise
  */
 function process(str, processor) {
     try {
