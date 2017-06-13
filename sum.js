@@ -10,22 +10,24 @@
  * sum if no parameters provided;
  * itself with accumulated results of previous calculating
  */
-let sum = function f(...args) {
+function sum(...args) {
     try {
         if (args.length === 0) {
-            return this.result;
+            const result = this.accumulator;
+            this.accumulator = undefined;
+            return result;
         }
-        if (typeof this.result === 'undefined')
-            this.result = +args[0];
+        if (typeof this.accumulator === 'undefined')
+            this.accumulator = +args[0];
         else
-            this.result = this.result + +args[0];
+            this.accumulator = this.accumulator + +args[0];
 
-        return f;
+        return sum;
     }
     catch (e) {
         return NaN;
     }
-};
+}
 
 console.log(sum(2)(5)());
 console.log(sum(10)(-3)());
